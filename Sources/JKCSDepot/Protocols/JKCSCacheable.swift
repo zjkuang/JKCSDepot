@@ -62,7 +62,7 @@ public extension JKCSCacheable {
         }
     }
     
-    static func retrieve<T: JKCSCacheable>(key: String, group: String = "default", storage: JKCSStorageType = .file) -> Result<T?, JKCSError> {
+    static func retrieve(key: String, group: String = "default", storage: JKCSStorageType = .file) -> Result<Self?, JKCSError> {
         switch storage {
         case .userDefaults:
             guard let data = UserDefaults.standard.data(forKey: key) else {
@@ -70,7 +70,7 @@ public extension JKCSCacheable {
             }
             let decoder = JSONDecoder()
             do {
-                let instance = try decoder.decode(T.self, from: data)
+                let instance = try decoder.decode(Self.self, from: data)
                 return Result.success(instance)
             }
             catch {
@@ -87,7 +87,7 @@ public extension JKCSCacheable {
                 if let data = data {
                     let decoder = JSONDecoder()
                     do {
-                        let instance = try decoder.decode(T.self, from: data)
+                        let instance = try decoder.decode(Self.self, from: data)
                         return Result.success(instance)
                     }
                     catch {
