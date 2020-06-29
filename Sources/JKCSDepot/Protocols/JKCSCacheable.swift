@@ -24,7 +24,7 @@ public enum JKCSCacheLookupResult {
 public protocol JKCSCacheable: Codable {
     @discardableResult func save(key: String, group: String, storage: JKCSStorageType) -> Result<ExpressibleByNilLiteral?, JKCSError>
     
-    static func retrieve<T: JKCSCacheable>(key: String, group: String, storage: JKCSStorageType) -> Result<T?, JKCSError>
+    static func retrieve(key: String, group: String, storage: JKCSStorageType) -> Result<Self?, JKCSError>
     
     static func clearFromStorage(key: String, group: String, storage: JKCSStorageType)
 }
