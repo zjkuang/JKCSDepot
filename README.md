@@ -1,7 +1,8 @@
 # JKCSDepot
 
 ## Publish A New Version
-```$ git add .
+```
+$ git add .
 $ git commit -m '<comments>'
 $ git tag 'x.y.z'
 $ git push origin master --tags
@@ -10,12 +11,14 @@ $ git push origin master --tags
 ATTENTION! DUE TO THE ISSUE WITH Xcode, DO NOT OPEN THE NEW CREATED PACKAGE IN Xcode until STEP (6).  
 (1) Create a new repository `JKCSDepot` on GitHub  
 (2) Clone the new created GitHub repository `JKCSDepot` to the local directory  
-(3) Create the new Swift package  
-```$ cd path/to/JKCSDepot
+(3) Create the new Swift package
+```
+$ cd path/to/JKCSDepot
 $ swift package init
 ```
-(4) In Finder, right click on Package.swift and open with an editor OTHER THAN Xcode, add iOS 13 to platforms and other Swift packages to dependencies  
-```let package = Package(
+(4) In Finder, right click on Package.swift and open with an editor OTHER THAN Xcode, add iOS 13 to platforms and other Swift packages to dependencies
+```
+let package = Package(
     name: "JKCSDepot",
     platforms: [.iOS(.v13)],
     products: [
@@ -42,10 +45,15 @@ $ swift package init
     ]
 )
 ```
-(5) In terminal, NOT XCODE, build the package to make the revision of `Package.swift` take into effect  
-```$ swift build
+(5) In terminal, NOT XCODE, build the package to make the revision of `Package.swift` take into effect
+```
+$ swift build
 ```
 (6) In Finder, double click on `Package.swift` to open the package in Xcode. Change the target machine from `My Mac` to `Generic iOS Device`  
 (7) Add files to the new created Swift package  
 Sometimes copy-and-pasting files from another Swift package into the new created one will cause build error like `no such module 'UIKit'`. To fix this issue, in the auto-generated "Hello world" file, `JKCSDepot.swift` in this example, add `import UIKit` and build the package, then copy-and-pasting files from other Swift package will be OK.  
-(8) Publish the package to GitHub  
+(8) Publish the package to GitHub
+## Add JKCSDepot To Your Project MyApp
+(1) Open `MyApp` in Xcode. In `Project Navigator` of Xcode, click on the project name `MyApp`, in `project and targets list`, click on the project `MyApp`, click on `Swift Packages` tab, click on `+` button, enter the url to `JKCSDepot` GitHub repository, click on `Next`...  
+(2) Build the target  
+Sometimes, maybe because of multiple targets, the new added `JKCSDepot` is not visible to `MyApp`. To fix this, click on a target, NOT THE PROJECT, click on `General` tab, under the entry of `Frameworks, Libraries, and Embedded Content`, click on `+` button and add `JKCSDepot`. Do this for all the other targets.
