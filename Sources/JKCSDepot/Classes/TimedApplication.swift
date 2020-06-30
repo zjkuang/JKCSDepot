@@ -39,11 +39,11 @@ public class TimedApplication: UIApplication {
     }
     
     @objc private func idleTimerExceeded() {
-        NotificationCenter.default.post(name: .userDidBecomeInactive, object: nil)
+        NotificationCenter.default.post(name: .userDidBecomeInactive, object: self, userInfo: ["idleTimeInterval": TimedApplication.userActivityTimeoutInSeconds])
     }
     
     @objc internal func userDidBecomeActive() {
-        NotificationCenter.default.post(name: .userDidBecomeActive, object: nil)
+        NotificationCenter.default.post(name: .userDidBecomeActive, object: self)
         resetIdleTimer()
     }
 }
