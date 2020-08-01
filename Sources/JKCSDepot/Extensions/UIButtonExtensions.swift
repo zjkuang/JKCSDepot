@@ -40,15 +40,15 @@ public extension UIButton {
     }
     
     @objc private func onTouchUpInside() {
-        self.alpha = 1
+        // self.alpha = 1
         onTapDelegate?()
     }
     
     @objc private func onTouchUpOutside() {
-        self.alpha = 1
+        // self.alpha = 1
     }
     
     @objc private func onTouchDown() {
-        self.alpha = 0.2
+        // self.alpha = 0.2
     }
 }
