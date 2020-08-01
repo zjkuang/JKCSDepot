@@ -30,6 +30,7 @@ public extension UIButton {
         return key
     }
     
+    @discardableResult
     func onTap(onTap: @escaping () -> ()) -> Self {
         onTapDelegate = onTap
         addTarget(self, action: #selector(onTouchDown), for: .touchDown)
