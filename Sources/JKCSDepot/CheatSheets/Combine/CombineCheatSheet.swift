@@ -64,8 +64,12 @@ public class CombineCheatSheet {
         case asynchronousFailureExpected
     }
     
+    private let exampleSubject: CurrentValueSubject<Int, Never>
+    public let examplePublisher: AnyPublisher<Int, Never>
+    
     public init() {
-        
+        exampleSubject = CurrentValueSubject<Int, Never>(0)
+        examplePublisher = exampleSubject.eraseToAnyPublisher()
     }
 
     public func modelRequest(expectation: Expectation) -> AnyPublisher<ModelResponse, ModelError> {
