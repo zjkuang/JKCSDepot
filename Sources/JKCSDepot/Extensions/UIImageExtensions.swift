@@ -25,7 +25,7 @@ public extension UIImage {
         }
     }
 
-    // https://stackoverflow.com/a/24545102/7455975
+    // 
     func imageWithColor(_ color: UIColor) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(self.size, false, self.scale)
         color.setFill()

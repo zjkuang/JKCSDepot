@@ -51,7 +51,7 @@ public extension UIView {
 // MARK: - Image
 
 public extension UIView {
-    func image() -> UIImage {
+    func imageCopy() -> UIImage {
         // https://www.hackingwithswift.com/example-code/media/how-to-render-a-uiview-to-a-uiimage
         let renderer = UIGraphicsImageRenderer(size: bounds.size)
         let image = renderer.image { (context) in
